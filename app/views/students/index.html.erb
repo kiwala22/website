@@ -1,0 +1,42 @@
+<br>
+<br>
+<div class="container" align="center">
+  <div class="jumbotron">
+    <h1>SEARCH RESULTS</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Registration number</th>
+          <th>Amount</th>
+          <th>Receipt number</th>
+          <th colspan="9"></th>
+        </tr>
+      </thead>
+  <tbody>
+    <% @students.each do |student| %>
+      <tr class="success">
+        <td><%= student.name %></td>
+        <td><%= student.registration_number %></td>
+        <td><%= student.amount %></td>
+        <td><%= student.receipt_number %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if @students.blank? %>
+  <h4>There is no student matching the given  <%= params[:search] %> criteria.</h4>
+<% end %>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h4>Sort students records based on amount</h4>
+        <%= form_tag(students_path, :method => "get", id: "search-form") do %>
+    <br>
+      <%= submit_tag "Sort",class: 'btn btn-primary dropdown-toggle', :name => nil %>
+    <% end %>
+    </div>
+  </div>
+  

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Group 8</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body><br>
+<div class="jumbotron">
+<div class="container">
+<p id="notice"><%= notice %></p>
+<strong><h2><%= @content.topic %></h2></strong>
+  <p><strong>Description:</strong><br>
+  <%= @content.description %>
+</p>
+<!--<%= link_to 'Edit', edit_content_path(@content) %> |-->
+<%= link_to '<< back', contents_path, class: 'btn btn-primary btn-sm' %>
+</div>
+</div>
+</body>
+</html>

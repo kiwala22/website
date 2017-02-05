@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @student.name %>
+</p>
+
+<p>
+  <strong>Registration number:</strong>
+  <%= @student.registration_number %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @student.amount %>
+</p>
+
+<p>
+  <strong>Receipt number:</strong>
+  <%= @student.receipt_number %>
+</p>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

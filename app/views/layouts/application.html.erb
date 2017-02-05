@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Group 8</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<link rel="icon" type="image/jpg" href="/assets/images/image2.JPG">
+</head>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container">
+<div class="navbar-header">
+<%= link_to 'Group 8', "#", class: 'navbar-brand' %>
+</div>
+<div id="navbar">
+<ul class="nav navbar-nav">
+<li><%= link_to 'Home', root_path %></li>
+</ul>
+<ul class="nav navbar-nav">
+<li><%= link_to 'Student Registration', new_student_path %></li>
+</ul>
+<ul class="nav navbar-nav pull-right">
+<% if user_signed_in? %>
+<!--<li class="dropdown">-->
+<div id="navbar">
+<ul class="nav navbar-nav">
+<li><%= link_to 'Student Records', students_path, class: 'navbar-brand' %></li>
+<li><%= link_to current_user.name, "#", class: 'navbar-brand' %></li>
+<li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+<span class="caret"></span>
+</ul>
+</div>
+<% else %>
+<li><%= link_to 'Log In', new_user_session_path %></li>
+<li><%= link_to 'Sign Up', new_user_registration_path %></li>
+<% end %>
+</ul>
+</div>
+</div>
+</nav>
+
+<body>
+<div class="container">
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>">
+  <%= value %>
+  </div>
+<% end %>
+</div>
+<%= yield :top_content %>
+<div class="container">
+  <h1><%= yield :header %></h1>
+    <%= yield %>
+</div>
+<% if user_signed_in? %>
+<div id = "footer" align="center">
+  <div class="row">
+	  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h6>SEARCH FOR A STUDENT</h6>
+        <%= form_tag(students_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Student", class: 'form-control' %>
+    <br>
+        <%= submit_tag "Search",class: 'btn btn-danger', :name => nil %>
+        <% end %>
+    </div>
+  </div>
+</div>
+<% end %><br>
+<div id="footer">
+  <div class="container">
+        <div class="row">
+            <h3 class="footertext" align="center">About Us:</h3>
+            <br>
+              <div class="col-md-4">
+                <center>
+                  <img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains">
+                  <br>
+                  <h4 class="footertext">Programmers</h4>
+                  <p class="footertext">You can thank all the members of group 8 for coding this cool stuff.<br>
+                </center>
+              </div>
+              <div class="col-md-4">
+                <center>
+                  <img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="...">
+                  <br>
+                  <h4 class="footertext">Creators</h4>
+                  <p class="footertext">All the cool stuff you see here were created by this man.<br>
+                </center>
+              </div>
+              <div class="col-md-4">
+                <center>
+                  <img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="...">
+                  <br>
+                  <h4 class="footertext">Designers</h4>
+                  <p class="footertext">This pretty site and the copy it holds are all thanks to the members of group 8.<br>
+                </center>
+              </div>
+            </div>
+            <div class="row">
+            <p><center><a href="https://web.facebook.com/martin.kiwala">Contact Us Here|Group 8</a> <p class="footertext">Copyright 2017</p></center></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
